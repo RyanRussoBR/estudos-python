@@ -33,30 +33,30 @@
 #     print('Acesso bloqueado!')
 
 #2 Jogo de adivinhação com dicas se o número sorteado é menor ou maior que o digitado pelo usuário
-from random import randint
-from time import sleep
-print('-'*50)
-print('Jogo da Adivinhação')
-print('-'*50)
+# from random import randint
+# from time import sleep
+# print('-'*50)
+# print('Jogo da Adivinhação')
+# print('-'*50)
 
-sleep(2)
-numSort = randint(0,50)
-print('Sorteando o número de 0 a 50...')
-sleep(2)
-print(numSort) # Usei hack kkk, só para testar o acerto de primeira
-num = int(input('Qual número foi sorteado? -> '))
-tentativas = 0
-while num != numSort:
-    tentativas += 1
-    if num > numSort:
-        print('Menor!')
-    elif num < numSort:
-        print('Maior!')
-    num = int(input('Qual número foi sorteado? -> '))
-tentativas += 1
+# sleep(2)
+# numSort = randint(0,50)
+# print('Sorteando o número de 0 a 50...')
+# sleep(2)
+# print(numSort) # Usei hack kkk, só para testar o acerto de primeira
+# num = int(input('Qual número foi sorteado? -> '))
+# tentativas = 0
+# while num != numSort:
+#     tentativas += 1
+#     if num > numSort:
+#         print('Menor!')
+#     elif num < numSort:
+#         print('Maior!')
+#     num = int(input('Qual número foi sorteado? -> '))
+# tentativas += 1
 
-if tentativas == 1:
-    print('Acertou de primeira!!!!!!!!!!!!')
-else:
-    print(f'Número Correto!\nVocê precisou de {tentativas} tentativas para acertar!')  # Creio que há alternativas melhores ao invés de fazer dois if's, corrigirei assim que possível.
+# if tentativas == 1:
+#     print('Acertou de primeira!!!!!!!!!!!!')
+# else:
+#     print(f'Número Correto!\nVocê precisou de {tentativas} tentativas para acertar!')  # Creio que há alternativas melhores ao invés de fazer dois if's, corrigirei assim que possível.
 
