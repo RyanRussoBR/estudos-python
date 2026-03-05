@@ -1,1 +1,1 @@
-<h1>Aqui encontram-se meu desenvolvimento e projetos feitos na linguagem Python.</h1>
+<h1>Aqui encontram-se meu desenvolvimento na linguagem Python.</h1>
