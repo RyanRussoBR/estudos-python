@@ -22,7 +22,7 @@
 #         print(f'{escolha} x {i} = {escolha*i}')
 #     print('-'*50)
 
-#3 Jogo de par ou ímpar
+#3 - Jogo de par ou ímpar
 # from random import randint
 
 # print('-='*50)
@@ -51,3 +51,31 @@
 #         print(f'Você perdeu! Ganhou {wins} vezes')
 #         break
 #     print('-'*50)
+
+#4 - Programa que cadastra pessoas com condições de pessoas menores de 18anos , Quantos homens cadastrados e mulheres cadastradas com menos de 20 anos
+
+# mens = girlsminor = people18 = 0
+
+# while True:
+#     print('-'*50)
+#     print('Cadastre uma Pessoa'.center(50))
+#     print('-'*50)
+#     age = int(input('Qual a idade? -> '))
+#     sexo = str(input('Qual o sexo? [F/M] -> ')).upper()
+#     while sexo not in 'FM':
+#         sexo = str(input('Qual o sexo? [F/M] -> ')).upper()
+
+#     if age > 18:
+#         people18 += 1
+#     if sexo == 'M':
+#         mens += 1
+#     if sexo == 'F' and age < 20:
+#         girlsminor += 1
+
+#     way = str(input('Quer continuar? [S/N] -> ')).upper()
+#     if way == 'N':
+#         break
+# print('-'*50)
+# print(f'Total de pessoas com mais de 18 anos: {people18}')
+# print(f'Ao todo temos {mens} homens')
+# print(f'Temos {girlsminor} mulheres com menos de 20 anos')
