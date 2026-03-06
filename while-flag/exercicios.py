@@ -79,3 +79,62 @@
 # print(f'Total de pessoas com mais de 18 anos: {people18}')
 # print(f'Ao todo temos {mens} homens')
 # print(f'Temos {girlsminor} mulheres com menos de 20 anos')
+
+#5 Uma loja que lista produtos e valores, no final deve falar o total gasto, produtos que custam mais de R$1000,00 e o nome do produto mais barato.
+
+# nomeBarato = ''
+# precoBarato = prodmil = total = 0
+# print('-='*30)
+# print('Loja do Ryanzão'.center(50))
+# print('-='*30)
+
+# while True:
+#     produto = str(input('Nome do produto: '))
+#     preco = float(input('Preço do produto: R$'))
+
+#     if preco < precoBarato or total == 0:
+#         precoBarato = preco
+#         nomeBarato = produto
+
+#     if preco > 1000:
+#         prodmil += 1 
+
+#     total += preco
+        
+#     escolha = str(input('Vai continuar? [S/N] -> ')).upper()
+#     while escolha not in 'SN':
+#         escolha = str(input('Vai continuar? [S/N] -> ')).upper()
+#     if escolha == 'N':
+#         break
+
+# print('-'*30)
+# print(f'O total gasto na compra foi: R${total:.2f}\n{prodmil} produtos custam acima de R$1000,00\nO produto mais barato chama-se {nomeBarato}, custando R${precoBarato:.2f}')
+
+# Caixa eletrônico que simula cédulas que o cliente irá receber
+
+# print('-'*50)
+# print('Banco do Ryan'.center(50))
+# print('-'*50)
+# valor = float(input('Que valor quer sacar? R$'))
+# total = valor
+# totced = 0
+# ced = 50
+# while True:
+#     if total >= ced:
+#         total -= ced
+#         totced += 1
+#     else:
+#         if totced > 0:
+#             print(f'Total de cédulas de R${ced:.2f}: {totced}')
+#         if ced == 50:
+#             ced = 20
+#         elif ced == 20:
+#             ced = 10
+#         elif ced == 10:
+#             ced = 1
+#         totced = 0
+#         if total == 0:
+#             break
+# print('Volte sempre no Banco do Ryan. Até breve.')
+
+# #usei totalmente a solução do prof para aprender a lógica. dificil
