@@ -23,23 +23,31 @@
 #     print('-'*50)
 
 #3 Jogo de par ou ímpar
-from random import randint
+# from random import randint
 
-print('-='*50)
-print('Jogão de Par ou Ímpar')
-print('-='*50)
+# print('-='*50)
+# print('Jogão de Par ou Ímpar')
+# print('-='*50)
 
-wins = 0
-while True:
-    numPlayer = int(input('Digite um número ->'))
-    escolha = str(input('O que acha que vai dar? (I para Ímpar ou P para Par) -> ')).upper()
-    numCpu = randint(0,100)
-    soma = numPlayer + numCpu
-    if soma % 2 == 0 and escolha == 'P':
-        wins += 1
-    elif soma % 2 != 0 and escolha == 'I':
-        wins += 1
-    else:
-        print(f'Você perdeu! Ganhou {wins} vezes')
-        break
-    soma = 0
+# wins = 0
+# while True:
+#     numPlayer = int(input('Digite um número -> '))
+#     escolha = str(input('O que acha que vai dar? (I para Ímpar ou P para Par) -> ')).upper()
+#     numCpu = randint(0,100)
+#     soma = numPlayer + numCpu
+#     print('-'*70)
+#     if soma % 2 == 0:
+#         print(f'Você escolheu {numPlayer}, e o computador escolheu {numCpu}. Total de {soma} é um número PAR')
+#     else:
+#         print(f'Você escolheu {numPlayer}, e o computador escolheu {numCpu}. Total de {soma} é um número ÍMPAR')
+#     print('-'*70)
+#     if soma % 2 == 0 and escolha == 'P':
+#         print('Você VENCEU! Vamos jogar novamente!')
+#         wins += 1
+#     elif soma % 2 != 0 and escolha == 'I':
+#         print('Você VENCEU! Vamos jogar novamente!')
+#         wins += 1
+#     else:
+#         print(f'Você perdeu! Ganhou {wins} vezes')
+#         break
+#     print('-'*50)
