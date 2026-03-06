@@ -32,10 +32,14 @@ print('-='*50)
 wins = 0
 while True:
     numPlayer = int(input('Digite um número ->'))
-    escolha = str(input('O que acha que vai dar? (I para Ímpar ou P para Par) -> ')).upper
+    escolha = str(input('O que acha que vai dar? (I para Ímpar ou P para Par) -> ')).upper()
     numCpu = randint(0,100)
     soma = numPlayer + numCpu
     if soma % 2 == 0 and escolha == 'P':
-    if soma % 2 != 0 and escolha == 'I':
+        wins += 1
+    elif soma % 2 != 0 and escolha == 'I':
+        wins += 1
+    else:
+        print(f'Você perdeu! Ganhou {wins} vezes')
         break
     soma = 0
