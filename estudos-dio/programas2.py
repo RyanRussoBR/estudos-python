@@ -38,7 +38,7 @@
 
 # Já o for com o built-in range, ao invés de colocar uma variável para percorrer, dá para colocar o numero de vezes que irá percorrer
 
-# Já o operador while é para executar várias vezes ou até uma lógica ser concretizada, geralmente usa um controlador, desavantagem que tem em relação ao seu irmão for.
+# Já o operador while é para executar várias vezes ou até uma lógica ser concretizada geralmente usa um controlador, desavantagem que tem em relação ao seu irmão for.
 
 # Aqui existe tanto o break, que interrompe um laço de repetiçao, funciona tanto no for quanto no while, e o continue, que ele simplesmente ignora algum bloco de código, se for uma condicional, ele pode ignorar (no print) se for uma sequencia.
 
