@@ -12,12 +12,12 @@ class Bicicleta:
         self.parar = parar
         self.buzina = buzina
 
-    def correr(self):
+    def corre(self):
         self.parar = False
         self.correr = True
         print("Zuuuummmmmm *correndo muuuuito*")
     
-    def parar(self):
+    def frear(self):
         self.parar = True
         print("Freando a bicicleta...")
         sleep(3)
@@ -26,8 +26,10 @@ class Bicicleta:
     
     def bibi(self):
         self.buzina = True
-        playsound('buzina.mp3')
+        playsound(r'C:\Users\GAMER\Documents\GitHub\estudos-python\estudos-dio\poo\programa\buzina.mp3')
 
 bicicleta1 = Bicicleta("branca", "bmx", "1994", 500)
 
+bicicleta1.corre()
 bicicleta1.bibi()
+bicicleta1.frear()
