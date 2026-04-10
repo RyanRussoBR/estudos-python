@@ -70,6 +70,32 @@
 # print('sei la')
 # print('sei la')
 
-# # criar_dog()
+#  criar_dog()
 
-# # Quando o del está dentro da classe, ele irá ser executado quando todos os objetos forem chamados e executados, mas para forçar a execução antes é só usar o del
+#  Quando o del está dentro da classe, ele irá ser executado quando todos os objetos forem chamados e executados, mas para forçar a execução antes é só usar o del
+
+
+# Seguindo nos conceitos no paradigma de orientação a objetos, hoje vou ver o conceito de Herança
+# Herança é a capacidade de uma classe "filha" herdar ou derivar características de uma classe "pai", bom para reutilização, economiza muito tempo. E permite adicionar mais recursos sem modificá-la por completo.
+# É de natureza transitiva, se a classe B herdar de uma classe A, todas as subclasses de B herdarão de A.
+# Tomar cuidado ao utilizar heranças pois para manutenção pode complicar se tiver várias heranças, se por exemplo mexer em uma classe, podee interferir nas demais.
+
+# class A:
+#     pass
+# class B(A): # Para definir a herança, só fazer a classe que quero fazer a herança entre parentêses a qual quero herdar.
+#     pass
+
+# Herança Simples: Quando uma classe filha herda somente de uma classe pai. O exemplo acima é uma.
+# class A:
+#     pass
+# class B(A): # Para definir a herança, só fazer a classe que quero fazer a herança entre parentêses a qual quero herdar.
+#     pass
+
+# Herança Múltipla: Já nesta herança, a classe filha herda características de várias classes pai.
+# class A:
+#     pass
+# class B:
+#     pass
+# class C(A, B):
+#     pass
+
