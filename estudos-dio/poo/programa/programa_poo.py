@@ -3,33 +3,24 @@ from time import sleep
 from playsound import playsound
 
 class Bicicleta:
-    def __init__(self, cor, modelo, ano, valor, buzina = False, correr = False, parar = True):
+    def __init__(self, cor, modelo, ano, valor):
         self.cor = cor
         self.modelo = modelo
         self.ano = ano
         self.valor = valor
-        self.correr = correr
-        self.parar = parar
-        self.buzina = buzina
 
-    def corre(self):
-        self.parar = False
-        self.correr = True
+    def correr(self):
         print("Zuuuummmmmm *correndo muuuuito*")
     
-    def frear(self):
-        self.parar = True
+    def parar(self):
         print("Freando a bicicleta...")
         sleep(3)
-        self.correr = False
         print('Bicileta parada.')
     
-    def bibi(self):
-        self.buzina = True
+    def buzina(self):
         playsound(r'C:\Users\GAMER\Documents\GitHub\estudos-python\estudos-dio\poo\programa\buzina.mp3')
 
-bicicleta1 = Bicicleta("branca", "bmx", "1994", 500)
+bicicleta1 = Bicicleta("branca", "bmx", 1994, 500)
 
-bicicleta1.corre()
-bicicleta1.bibi()
-bicicleta1.frear()
+bicicleta1.parar()
+bicicleta1.buzina()

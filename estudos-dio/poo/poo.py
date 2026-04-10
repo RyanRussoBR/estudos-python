@@ -33,3 +33,5 @@
 # print(cao2.acordado)
 # cao2.dormir()
 # print(cao2.acordado)
+
+# self significa que é a instância do objeto, a referência direta ao objeto.
