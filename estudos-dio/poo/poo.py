@@ -35,3 +35,41 @@
 # print(cao2.acordado)
 
 # self significa que é a instância do objeto, a referência direta ao objeto.
+
+
+# Também em poo tem os construtores e destrutores
+# O método construtor é quando uma nova instância é criada, geralmente é descrito como __init__. É feito para inicializar o estado de um objeto. Também pode ser chamado como método inicializador (achei maneirinho esse outro nome)
+# Já o destrutor é o que faz um estado de um objeto seja destruído (meio assustador kkkkk). Não é muito utilizado em Python pois ele tem um coletor de lixo automático. É representado como __del__
+
+class Cachorro:
+    def __init__(self, nome, cor, idade, acordado = True):
+        print('Inicializando a instância')
+        self.nome = nome
+        self.cor = cor
+        self.idade = idade
+        self.acordado = acordado
+    
+    def __del__(self):
+        print("removendo instância")
+
+    def falar(self):
+        print("auuauauau")
+
+
+# def criar_dog():
+#     c = Cachorro("sei la", "colorido", 11)
+#     print(c.nome)
+
+c = Cachorro("Negão", 'caramelo', 15)
+c.falar()
+print('sei la')
+del c
+print('sei la')
+print('sei la')
+print('sei la')
+print('sei la')
+print('sei la')
+
+# criar_dog()
+
+# Quando o del está dentro da classe, ele irá ser executado quando todos os objetos forem chamados e executados, mas para forçar a execução antes é só usar o del
