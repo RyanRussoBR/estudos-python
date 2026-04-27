@@ -21,8 +21,8 @@ class PessoaFisica(Cliente):
         self.data_nascimento = data_nascimento
 
 class Conta:
-    def __init__(self, saldo, numero, cliente):
-        self._saldo = saldo
+    def __init__(self, numero, cliente):
+        self._saldo = 0
         self._numero = numero
         self._agencia = '0001'
         self._cliente = cliente
@@ -72,10 +72,10 @@ class Conta:
         return False    
     
 class ContaCorrente(Conta):
-    def __init__(self, numero, cliente, limite=500, limiteSaque=3):
+    def __init__(self, numero, cliente, limite=500, limite_saques=3):
         super().__init__(numero,cliente)
         self.limite = limite
-        self.limite_saques = self.limite_saques
+        self.limite_saques = limite_saques
 
     def sacar(self, valor):
         numero_saques = len([transacao for transacao in self.historico.transacoes if transacao["tipo"] == Saque.__name__])
@@ -304,3 +304,5 @@ def main():
 
         else:
             print("Operação inválida, digite novamente o serviço desejado.")
+
+main()
