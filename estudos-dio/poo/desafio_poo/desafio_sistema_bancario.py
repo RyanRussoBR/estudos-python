@@ -52,8 +52,10 @@ class Conta:
         if valor > 0:
             self._saldo += valor
             print('='*50,'\nValor Depositado com sucesso.')
+            return True
         else:
             print('Operação mal-sucedida, tente novamente.')
+            return False
 
     def sacar(self,valor):
         saldo = self._saldo
@@ -114,7 +116,7 @@ class Historico:
             {
                 "tipo": transacao.__class__.__name__,
                 "valor": transacao.valor,
-                "data": datetime.now().strftime("%d-%m-%Y %H:%M:%s"),
+                "data": datetime.now().strftime('%d-%m-%Y %H:%M:%S')
             }
         )
 
@@ -223,12 +225,12 @@ def exibir_extrato(clientes):
     if not conta:
         return
     
-    print('_'*50,'\nEXTRATO','='*50)
+    print('EXTRATO'.center(50, '='))
     transacoes = conta.historico.transacoes
 
     extrato = ''
     if not transacoes:
-        extrato = 'Não foram realizada movimentações'
+        extrato = 'Não foram realizadas movimentações'
     else:
         for transacao in transacoes:
             extrato += f"\n{transacao['tipo']}:\n\tR${transacao['valor']:.2f}"
@@ -300,6 +302,7 @@ def main():
             listar_contas(contas)
 
         elif opcao == 'q':
+            print('Obrigado por acessar aos nossos sistemas! Desejamos um ótimo dia.')
             break
 
         else:
