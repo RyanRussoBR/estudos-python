@@ -84,4 +84,79 @@
 # As classes Deposito e Saque são feitas para representar o tipo e o valor feito na operação realizada pelo usuário.
 
 
+#Aplicando interatividade com o usuário e finalização do bloco 3
+class Conta:
+    def __init__(self):
+        self.saldo = 0
+    
+    def sacar(self, valor):
+        if valor <= self.saldo:
+            self.saldo -= valor
+        else:
+            print('Saldo insuficiente.')
+        
+    def depositar(self, valor):
+        self.saldo += valor
+
+    def __str__(self):
+        return f"{self.saldo}"
+    
+class Historico:
+    def __init__(self):
+        self.transacoes = []
+
+    def adicionar(self, transacao):
+        self.transacoes.append({
+            "tipo": transacao.__class__.__name__,
+            "valor": transacao.valor
+        })
+    
+    def __str__(self):
+        texto = ''
+        for t in self.transacoes:
+            texto += f"Operação: {t['tipo']} -> R${t['valor']}\n"
+
+        return texto if texto else print('Não houve transações')
+    
+class Deposito:
+    def __init__(self, valor):
+        self.valor = valor
+        pass
+    
+
+class Saque:
+    def __init__(self, valor):
+        self.valor = valor
+        pass
+
+def menu():
+    print('0. Sair\n1. Saque\n2. Depósito')
+
+def main():
+    historico = Historico()
+    contateste = Conta()
+    while True:
+        menu()
+        opcao = int(input('Qual opção escolher? -> '))
+
+        if opcao == 0:
+            break
+
+        elif opcao == 1:
+            valor = float(input('Qual valor sacar? -> R$'))
+            contateste.sacar(valor)
+            s = Saque(valor)
+            historico.adicionar(s)
+
+        elif opcao == 2:
+            valor = float(input('Qual valor depositar?-> R$'))
+            contateste.depositar(valor)
+            d = Deposito(valor)
+            historico.adicionar(d)
+        else:
+            print('Nem existe esse comando parça')
+        print(contateste)
+        print(historico)
+
+main()
         
