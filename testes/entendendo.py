@@ -92,8 +92,10 @@ class Conta:
     def sacar(self, valor):
         if valor <= self.saldo:
             self.saldo -= valor
+            return True
         else:
             print('Saldo insuficiente.')
+            return False
         
     def depositar(self, valor):
         self.saldo += valor
@@ -116,7 +118,7 @@ class Historico:
         for t in self.transacoes:
             texto += f"Operação: {t['tipo']} -> R${t['valor']}\n"
 
-        return texto if texto else print('Não houve transações')
+        return texto if texto else 'Não houve transações'
     
 class Deposito:
     def __init__(self, valor):
@@ -144,9 +146,11 @@ def main():
 
         elif opcao == 1:
             valor = float(input('Qual valor sacar? -> R$'))
-            contateste.sacar(valor)
-            s = Saque(valor)
-            historico.adicionar(s)
+            operacao_realizada = contateste.sacar(valor)
+            if operacao_realizada:
+                s = Saque(valor)
+                historico.adicionar(s)
+
 
         elif opcao == 2:
             valor = float(input('Qual valor depositar?-> R$'))
@@ -155,7 +159,7 @@ def main():
             historico.adicionar(d)
         else:
             print('Nem existe esse comando parça')
-        print(contateste)
+        print(f"R${contateste}")
         print(historico)
 
 main()
