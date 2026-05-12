@@ -1,5 +1,9 @@
-from fastapi import FastAPI
+from fastapi import Response, FastAPI, Cookie, status, Header
 from datetime import UTC, datetime  
+from pydantic import BaseModel
+from typing import Annotated 
+
+
 
 app = FastAPI()
 fake_db = [
@@ -15,8 +19,27 @@ fake_db = [
 # Se eu remover o = True do bool, vai dar erro pois argumentos obrigatórios vem primeiro dos argumentos opcionais, no caso ali o skip e limit estão como argumentos opcionais
 
 @app.get('/posts')
-def read_posts(published: bool, skip: int = 0, limit: int = len(fake_db)):
+def read_posts(response: Response, published: bool, limit: int, skip: int = 0, ads_id: Annotated[str | None, Cookie()] = None, user_agent: Annotated[str | None, Header()] = None):
+    response.set_cookie(key='user_six_seven', value='roro@hotmail.com') # Le um cookie
+    print(f'Cookie: {ads_id}') # Define um cookie, é o numero la hehe
+    print(f'User_Agent: {user_agent}')
     return [post for post in fake_db[skip: skip + limit] if post ['published'] is published]
+
+class Post(BaseModel):
+    title: str
+    date: datetime = datetime.now(UTC)
+    published: bool = False
+    author: str
+    
+
+@app.get('/')
+def root():
+    return 'Olá mundo'
+
+@app.post('/posts', status_code=status.HTTP_201_CREATED)
+def create_post(post: Post):
+    fake_db.append(post.model_dump()) # Este model dump faz com que a representação na classe post esteja em formato de dicionario.
+    return post
 
 
 @app.get("/posts/{framework}") # Define uma rota
