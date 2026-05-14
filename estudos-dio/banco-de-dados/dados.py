@@ -20,5 +20,38 @@ def atualizar(dados, cursor, nome, email, id):
     cursor.execute('UPDATE  clientes SET nome = ?, email = ? WHERE id = ?;', data)
     dados.commit()
 
+def remover(dados, cursor, id):
+    data = (id,) # Para passar uma tupla de unico valor, tem que colocar virgula
+    cursor.execute('DELETE FROM clientes WHERE id = ?;', data)
+    dados.commit()
 
-atualizar(dados, cursor, 'Ryan Bruto legalzão', 'ry@hotmail.com', 1)
+def inserirMuitos(dados, cursor, infos):
+    cursor.executemany("INSERT INTO clientes (nome,email) VALUES(?,?);", infos)
+    dados.commit()
+
+def consultar(cursor, id):
+    cursor.row_factory = sqlite3.Row
+    cursor.execute('SELECT * FROM clientes WHERE id = ?;', (id,))
+    return cursor.fetchone()
+
+def consultarBastante(cursor):
+    return cursor.execute('SELECT * FROM clientes;')
+
+clientes = consultarBastante(cursor)
+for cliente in clientes:
+    print(cliente)
+
+cliente = consultar(cursor, 3)
+print(dict(cliente))
+print(cliente['nome'])
+# print(cliente["nome"])
+
+# infos = [
+#     ('Outra pessoa', 'gg@gmail.com'),
+#     ('Negão', 'g@gmail.com'),
+#     ('Jeuy', '12@gmail.com'),
+#     ('kkk', '55gmail.com'),
+# ]
+
+# inserirMuitos(dados, cursor, infos)
+

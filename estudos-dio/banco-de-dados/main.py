@@ -29,3 +29,8 @@
 # Importante colocar aquela interrogação, para evitar o sql injection, método meio chato dos hacker ai
 # Porque há pessoas que fazem concatenação, colocando f string no insert, e colocando {nome} no lugar da interrogação, fazendo com que a segurança do banco de dados fique comprometida.
 # E para atualizar dados, é usado o método UPDATE, que vem acompanhado do SET nome_coluna = ? para indicar qual dado vai ser atualizado ou dados né :D, e o WHERE id = ?, para indicar qual usuário terá seus dados atualizados. 
+# E para excluir dados, tem o comando "DELETE FROM lala WHERE id=?", data
+# Afim de não sobrecarregar o servidor tendo vários commits quando registrar varios dados (um commit por vez), temos o executemany, que irá realizar a inserção de lista de tuplas (varios dados), realizando somente um commit no final, assim, permitindo inserir vários dados, de uma forma mais rápida e prática, exemplo: cursor.executemany("INSERT INTO clientes(nome, email) VALUES(?,?);", data -> Aqui vai estar armazenada a lista de tuplas.)
+# Para realizar consultas, é usado o fetchone (para consultar um único campo (tupla)), e o fetchall (para consultar vários campos de uma vez só)
+# Tem também o row_factory, que serve basicamente para os dados do banco de dados retornarem como dicionario ao invés de tuplas, facilita o trabalho de exibição de mensagens com o nome da pessoa por exemplo.
+# Tem o comando (método) rollback, que faz o banco de dados cancelar as mudanças.
