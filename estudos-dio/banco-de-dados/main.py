@@ -16,3 +16,16 @@
 # DELETE FROM: Usado para excluir dados, também sempre interessante usar o WHERE id=1 no final para identificar qual id terá seus dados excluidos.
 
 # Vi no REDDIT, e confirmei no GPT uma coisa de suma importância, o ; no sql indica o fim de uma instrução, ou seja, isso é muito perigoso, principalmente a mim kkkk.  
+
+# Vou ver sobre Python DB API
+# Para realizar uma conexão, é usado:
+# import sqlite3
+# con = sqlite3.connect('banco_dados.db') -> Daqui que vem o tão falado formato db, que o pessoal ignora no commit quando vai subir o projeto, para não expor o banco de dados de uma aplicação
+# Para criar o arquivo db, é importante utilizar a biblioteca pathlib, importando o Path, pois ele permite trabalhar com caminhos de forma mais eficiente, tornando a execução do banco de dados mais flexível, evitando conflitos com caminhos
+# Para realizar comandos com o sqlite, devemos definir o cursor, logo em seguida, com o método execute no cursor, é realizado os comandos no banco de dados.
+# Para criar a tabela devemos fazer cursor.execute('CREATE TABLE lala(id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR(100))') -> Quando é um dado que é uma string, importante colocar VARCHAR.
+# nome = 'Ryan Lindo'
+# Para inserir dados usa-se o cursor.execute('INSERT INTO lala(nome)' VALUES(?);' nome)
+# Importante colocar aquela interrogação, para evitar o sql injection, método meio chato dos hacker ai
+# Porque há pessoas que fazem concatenação, colocando f string no insert, e colocando {nome} no lugar da interrogação, fazendo com que a segurança do banco de dados fique comprometida.
+# E para atualizar dados, é usado o método UPDATE, que vem acompanhado do SET nome_coluna = ? para indicar qual dado vai ser atualizado ou dados né :D, e o WHERE id = ?, para indicar qual usuário terá seus dados atualizados. 
