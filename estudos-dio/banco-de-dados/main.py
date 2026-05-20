@@ -34,3 +34,5 @@
 # Para realizar consultas, é usado o fetchone (para consultar um único campo (tupla)), e o fetchall (para consultar vários campos de uma vez só)
 # Tem também o row_factory, que serve basicamente para os dados do banco de dados retornarem como dicionario ao invés de tuplas, facilita o trabalho de exibição de mensagens com o nome da pessoa por exemplo.
 # Tem o comando (método) rollback, que faz o banco de dados cancelar as mudanças.
+
+# Agora para conectar a FastAPI com o banco de dados, tem alguns comandos bem legais, como o startup, ele indica o que vai ser executado primeiro. E o shutdown para desligar.
