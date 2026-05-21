@@ -1,12 +1,11 @@
 from datetime import UTC, datetime  
 from typing import Annotated 
 
-from fastapi import Response, FastAPI, Cookie, status, Header
-from main import app
+from fastapi import Response, Cookie, status, Header, APIRouter
 from schemas.post import PostIn  
 from views.post import PostOut
 
-
+router = APIRouter(prefix="/posts")
 
 fake_db = [
     {"title": f"Criando uma aplicação com DJANGO", "date": datetime.now(UTC), "published": True},
@@ -15,12 +14,12 @@ fake_db = [
     {"title": f"Internacionalizando uma app STARLETT", "date": datetime.now(UTC), "published": False},
 ]
 
-@app.post('/posts', status_code=status.HTTP_201_CREATED, response_model=PostOut)
+@router.post('/', status_code=status.HTTP_201_CREATED, response_model=PostOut)
 def create_post(post: PostIn):
     fake_db.append(post.model_dump()) # Este model dump faz com que a representação na classe post esteja em formato de dicionario.
     return post
     
-@app.get('/posts', response_model=list[PostOut])
+@router.get('/', response_model=list[PostOut])
 def read_posts(response: Response, published: bool, limit: int, skip: int = 0, ads_id: Annotated[str | None, Cookie()] = None, user_agent: Annotated[str | None, Header()] = None):
     response.set_cookie(key='user_six_seven', value='roro@hotmail.com') # Le um cookie
     print(f'Cookie: {ads_id}') # Define um cookie, é o numero la hehe
@@ -29,7 +28,7 @@ def read_posts(response: Response, published: bool, limit: int, skip: int = 0, a
 
 
 
-@app.get("/posts/{framework}", response_model=PostOut) # Define uma rota
+@router.get("/{framework}", response_model=PostOut) # Define uma rota
 def read_framework_posts(framework: str): # Aqui define o método utilizado
     return {
         "posts": [ 
