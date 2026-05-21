@@ -1,8 +1,15 @@
+
 from pydantic import BaseModel
-from datetime import datetime, UTC
+from datetime import datetime
 
 class PostIn(BaseModel):
     title: str
-    date: datetime = datetime.now(UTC)
+    content: str
     published: bool = False
-    author: str
+    published_at: datetime | None = None
+
+class PostUpdateIn(BaseModel):
+    title: str | None = None
+    content: str | None = None
+    published: bool | None = None
+    published_at: datetime | None = None

@@ -1,41 +1,38 @@
-from datetime import UTC, datetime  
-from typing import Annotated 
-
-from fastapi import Response, Cookie, status, Header, APIRouter
-from schemas.post import PostIn  
+from fastapi import Response, status, APIRouter
+from schemas.post import PostIn, PostUpdateIn  
 from views.post import PostOut
+from models.post import posts   
+from database import database
+
+from databases.interfaces import Record
 
 router = APIRouter(prefix="/posts")
+service = PostService()
 
-fake_db = [
-    {"title": f"Criando uma aplicação com DJANGO", "date": datetime.now(UTC), "published": True},
-    {"title": f"Internacionalizando uma app FASTAPI", "date": datetime.now(UTC), "published": True},
-    {"title": f"Criando uma aplicação com FLASK", "date": datetime.now(UTC), "published": True},
-    {"title": f"Internacionalizando uma app STARLETT", "date": datetime.now(UTC), "published": False},
-]
-
-@router.post('/', status_code=status.HTTP_201_CREATED, response_model=PostOut)
-def create_post(post: PostIn):
-    fake_db.append(post.model_dump()) # Este model dump faz com que a representação na classe post esteja em formato de dicionario.
-    return post
-    
 @router.get('/', response_model=list[PostOut])
-def read_posts(response: Response, published: bool, limit: int, skip: int = 0, ads_id: Annotated[str | None, Cookie()] = None, user_agent: Annotated[str | None, Header()] = None):
-    response.set_cookie(key='user_six_seven', value='roro@hotmail.com') # Le um cookie
-    print(f'Cookie: {ads_id}') # Define um cookie, é o numero la hehe
-    print(f'User_Agent: {user_agent}')
-    return [post for post in fake_db[skip: skip + limit] if post ['published'] is published]
+async def read_posts(published: bool, limit: int, skip: int = 0) -> list[Record]:
+    return await service.read_all(published=published, limit=limit, skip=skip)
+    
+@router.post('/', status_code=status.HTTP_201_CREATED, response_model=PostOut)
+async def create_post(post: PostIn):
+    query = posts.insert().values(title = post.title, content = post.content, published_at=post.published_at, published = post.published)
+    last_id = await database.execute(query)
+    return {**post.model_dump(), "id": last_id}
 
+@router.get('/{id}', response_model=PostOut)
+async def read_post(id: int):
+    return await service.read(id)
 
+@router.patch('/{id}', response_model=PostOut)
+async def update_post(id: int, post: PostUpdateIn):
+    return await service.update(id= id, post=post)
 
-@router.get("/{framework}", response_model=PostOut) # Define uma rota
-def read_framework_posts(framework: str): # Aqui define o método utilizado
-    return {
-        "posts": [ 
-        {"title": f"Criando uma aplicação com {framework}", "date": datetime.now(UTC)},
-        {"title": f"Internacionalizando uma app {framework}", "date": datetime.now(UTC)}, 
-        ]
-    } # Criando um dicionário para json
+@router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT_, response_model=None)
+async def delete_post(id:int):
+    return await service.read(id)
+    
+
+ # Criando um dicionário para json
 # E aqui o parametro framework é recebido diretamente no path (endereço do navegador) - Vulgo PATH PARAMETER
 
 # A estrutura básica de uma FastAPI é ter folders: models, controllers, bios, views e services :)
